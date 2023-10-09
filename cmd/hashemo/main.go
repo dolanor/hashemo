@@ -19,7 +19,10 @@ func main() {
 		if !ok {
 			panic("non traditional checksum tool output:\n\t<checksum in hex> <file name>")
 		}
-		hashemo := hashemo.FromHexString(hash)
+		hashemo, err := hashemo.FromHexString(hash)
+		if err != nil {
+			panic(err)
+		}
 		fmt.Println(hashemo, fileName)
 	}
 }
